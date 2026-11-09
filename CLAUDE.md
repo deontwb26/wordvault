@@ -23,7 +23,8 @@ Ask before adding any other library. No router: tabs are state in `src/App.tsx`.
   - `saved_word_categories` (word_id, category_id, user_id) – cascade deletes, so deleting a category keeps words
 - All Supabase calls live in `src/data/store.ts`. Shared state (session, words, categories, `refresh()`)
   in `src/data/VaultContext.tsx`; call `refresh()` after writes.
-- Auth: email + password; the user is created in the Supabase dashboard (no sign-up UI).
+- Auth: email + password with sign-up in `src/components/SignInForm.tsx` (multi-user; data split by RLS).
+  Hosted on Vercel from GitHub `deontwb26/wordvault` (push to `main` = deploy); env vars set in Vercel.
 - Backup JSON (`src/utils/backup.ts`): `{app:'wordvault', version:1, categories, savedWords, lookupCache}`.
   Import merges by category name and word.
 

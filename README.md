@@ -14,9 +14,15 @@ categories. Saved words sync through Supabase, so they show up on every device.
    (Supabase → Project Settings → API). See `.env.example` for the format.
 3. **Create the tables.** In Supabase open **SQL Editor → New query**, paste all of
    `supabase/schema.sql`, and press **Run**.
-4. **Create your login.** In Supabase open **Authentication → Users → Add user →
-   Create new user**, enter your email and a password, and tick
-   **Auto Confirm User**. (The app has no sign-up page on purpose: only you can log in.)
+4. **Sign-up settings.** Anyone can create an account from the sign-in box
+   ("Create an account"). In Supabase:
+   - **Authentication → Sign In / Providers → Email**: keep *Allow new users to sign up*
+     on. *Confirm email* on = new users must click an emailed link first.
+   - **Authentication → URL Configuration**: set **Site URL** to the live Vercel URL and
+     add both `https://<your-app>.vercel.app/**` and `http://localhost:5173/**` to
+     **Redirect URLs**, so confirmation links open the app.
+   You can still add users by hand: **Authentication → Users → Add user** (tick
+   **Auto Confirm User**).
 
 ## Run
 
