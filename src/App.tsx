@@ -27,8 +27,18 @@ function Shell() {
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <header className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
+          {/* Clicking the logo takes you back to the Search tab. */}
           <h1 className="text-xl font-bold">
-            Word<span className="text-indigo-600">Vault</span>
+            <button
+              onClick={() => {
+                setTab('Search')
+                window.scrollTo(0, 0)
+              }}
+              className="cursor-pointer"
+              aria-label="WordVault – go to Search"
+            >
+              Word<span className="text-indigo-600">Vault</span>
+            </button>
           </h1>
           {session && (
             <button onClick={() => supabase.auth.signOut()} className="text-sm text-slate-500 hover:text-slate-800">
